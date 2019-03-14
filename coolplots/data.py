@@ -18,6 +18,8 @@ def plot1d(xdata, ydata, outfile=None, xdata_label=None, ydata_label=None, capti
             caption,
             ha='center')
 
+        fig.tight_layout()
+
         if outfile is not None:
             fig.savefig(outfile)
 
@@ -44,6 +46,7 @@ def plotpoints(xdata, ydata, outfile=None, xdata_label=None, ydata_label=None, c
             0.5, 0.05,
             caption,
             ha='center')
+        fig.tight_layout()
 
         if outfile is not None:
             fig.savefig(outfile)
@@ -51,9 +54,9 @@ def plotpoints(xdata, ydata, outfile=None, xdata_label=None, ydata_label=None, c
         plt.gcf().clear()
 
 def dryrun_plotpoints():
-    xdata = np.linspace(0, 3, 10)
-    ydata = np.exp(-xdata**2)
-    plotpoints(xdata, ydata, outfile='test.svg', xdata_label='time', ydata_label='power spectrum', caption='A cool plot')
+    xdata = np.linspace(0, 3, 100)
+    ydata = np.exp(-xdata**2) + np.random.rand(xdata.size)
+    plotpoints(xdata, ydata, outfile='test.pdf', xdata_label='time', ydata_label='power spectrum', caption='A cool plot')
 
 if __name__ == '__main__':
     print("This module is not meant to be run as a script")
